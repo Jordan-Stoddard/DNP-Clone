@@ -1,0 +1,114 @@
+.chat_container {
+  min-height: 475px;
+  min-width: 80%;
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+
+  .bot_reply {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    img {
+      border-radius: 48%;
+      width: 40px;
+    }
+
+    .question_image {
+      width: 60%;
+    }
+
+    p {
+      position: relative;
+      background: rgb(223, 223, 223);
+      border-radius: 0.4em;
+      font-family: Roboto, "sans-serif";
+      font-size: 1.8rem;
+      padding: 0.8rem 2rem;
+      margin-left: 10px;
+      letter-spacing: 0px;
+      margin-bottom: 2px;
+      overflow-wrap: break-word;
+      max-width: 60%;
+    }
+
+    p:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border: 20px solid transparent;
+      border-right-color: rgb(223, 223, 223);
+      border-left: 0;
+      border-bottom: 0;
+      margin-top: -10px;
+      margin-left: -6px;
+    }
+  } // end bot_reply
+
+  .user_reply {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+    margin-bottom: 10px;
+
+    .user_img_bg {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      z-index: 0;
+      background: lightgrey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    svg {
+      fill: url(#MyGradient);
+      border-radius: 50%;
+      position: relative;
+      bottom: 0px;
+      border-bottom: 0px solid lightgrey;
+    }
+
+    p {
+      position: relative;
+      background: #e039ae;
+      border-radius: 0.4em;
+      font-family: Roboto, "sans-serif";
+      font-size: 1.8rem;
+      padding: 0.8rem 2rem;
+      margin-left: 10px;
+      letter-spacing: 0px;
+      margin-bottom: 2px;
+      margin-right: 10px;
+      color: white;
+      max-width: 60%;
+    }
+
+    p:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border: 20px solid transparent;
+      border-left-color: #e039ae;
+      border-right: 0;
+      border-bottom: 0;
+      margin-top: -3.5px;
+      margin-right: -6px;
+    }
+  }
+}
+
+.requested_image {
+  width: 60%;
+  max-height: 256px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}

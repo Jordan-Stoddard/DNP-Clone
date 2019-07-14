@@ -1,0 +1,22 @@
+.app_container {
+  margin: 15px auto;
+  display: flex;
+  width: 800px;
+  background: white;
+  min-height: 780px;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  h1 {
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.8rem;
+    font-family: Montserrat, "sans-serif";
+    font-style: normal;
+    font-weight: 900;
+    color: #eb45ed;
+    letter-spacing: -2px;
+  }
+}

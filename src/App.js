@@ -3,22 +3,23 @@ import axios from "axios";
 import UserReplies from "./components/UserReplies";
 import Chat from "./components/Chat";
 
-const url = "http://localhost:2001/reply";
+const url = "https://example-chatbot-11.herokuapp.com/reply";
 
 const initialState = {
   userReplies: [
     `Can you direct me to Jordan's portfolio?`,
     "How can I learn Rivescript?",
-    "What color should we paint the DNP office?"
+    "What color should we paint the DNP office?",
+    "Show me a picture.",
+    "Help me find a podcast."
   ],
-  chatStorage: [],
+  chatStorage: ["What can I help you with?"],
   question: "",
+  title: ""
 };
 
 function App() {
   const [state, setState] = useState(initialState);
-
-  useEffect(() => {}, []);
 
   const setQuestion = setState => e => {
     e.persist();
@@ -32,8 +33,9 @@ function App() {
   };
 
   useEffect(() => {
+    // Loads first question from bot.
     axios
-      .post("https://example-chatbot-11.herokuapp.com/reply", {
+      .post(url, {
         username: "jdog",
         message: "lets start"
       })
@@ -41,7 +43,7 @@ function App() {
         setState(prevState => {
           return {
             ...prevState,
-            chatStorage: [res.data.reply]
+            title: res.data.reply
           };
         });
       });
@@ -64,9 +66,11 @@ function App() {
           userReplies: [
             `Can you direct me to Jordan's portfolio?`,
             "How can I learn Rivescript?",
-            "What color should we paint the DNP office?"
+            "What color should we paint the DNP office?",
+            "Show me a picture.",
+            "Help me find a podcast."
           ],
-          chatStorage: []
+          chatStorage: ["What can I help you with?"]
         };
       });
     }
@@ -77,35 +81,81 @@ function App() {
         return {
           ...prevState,
           userReplies: [
-            "red",
-            "orange",
-            "yellow",
-            "green",
-            "blue",
-            "purple",
-            "black",
-            "white",
-            "grey",
-            "sarcoline"
+            "Red",
+            "Orange",
+            "Yellow",
+            "Green",
+            "Blue",
+            "Purple",
+            "Black",
+            "White",
+            "Grey",
+            "Sarcoline"
           ]
+        };
+      });
+    }
+
+    if (state.question.includes("Show me a picture.")) {
+      setState(prevState => {
+        return {
+          ...prevState,
+          userReplies: ["The DNP office.", "Google's Headquarters.", "Reid Hoffman."]
+        };
+      });
+    }
+
+    if (state.question.includes("podcast")) {
+      setState(prevState => {
+        return {
+          ...prevState,
+          userReplies: ["Business.", "Non-fiction story-telling."]
+        };
+      });
+    }
+
+    if (state.question === 'Business.') {
+      setState(prevState => {
+        return {
+          ...prevState,
+          userReplies: ["This Week in Startups", "Angelist Podcast", "First Round", "The Pitch"]
+        };
+      });
+    }
+
+    if (state.question === 'Non-fiction story-telling.') {
+      setState(prevState => {
+        return {
+          ...prevState,
+          userReplies: ["Heavyweights", "Dax Shepherd", "Crimetown"]
         };
       });
     }
 
     // Ending of question phase statements.
     switch (state.question) {
-      case "red":
-      case "orange":
-      case "yellow":
-      case "green":
-      case "blue":
-      case "purple":
-      case "black":
-      case "white":
-      case "grey":
-      case "sarcoline":
+      case "Red":
+      case "Orange":
+      case "Yellow":
+      case "Green":
+      case "Blue":
+      case "Purple":
+      case "Black":
+      case "White":
+      case "Grey":
+      case "Sarcoline":
       case "Can you direct me to Jordan's portfolio?":
       case "How can I learn Rivescript?":
+      case "The DNP office.":
+      case "Google's Headquarters.":
+      case "Reid Hoffman.":
+      case "This Week in Startups":
+      case "Angelist Podcast":
+      case "First Round":
+      case "The Pitch":
+      case "Heavyweights":
+      case "Dax Shepherd":
+      case "Crimetown":
         setState(prevState => {
           return {
             ...prevState,
@@ -120,7 +170,7 @@ function App() {
 
   return (
     <div className="app_container">
-      <h1>{state.question}</h1>
+      <h1>{state.title}</h1>
       <Chat state={state} />
       <UserReplies
         state={state}

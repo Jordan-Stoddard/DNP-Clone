@@ -1,0 +1,23 @@
+.user_replies_container {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 165px;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-top: 35px;
+
+  input {
+    border: none;
+    background: #fff;
+    color: rgb(75, 0, 155);
+    cursor: pointer;
+    font-family: Roboto, "sans-serif";
+    font-size: 1.6rem;
+    padding: 0.7rem 1.5rem;
+    margin: 1.5%;
+    box-shadow: 0 4px 19px rgba(0, 0, 0, 0.2), 0 5px 6px rgba(0, 0, 0, 0.1);
+    height: 45px;
+    font-weight: 900px;
+    outline: none;
+  }
+}
