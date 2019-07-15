@@ -54,7 +54,7 @@ export const useAppFunctionality = initialState => {
       });
     }
 
-    // If we ask a question that includes the word color, 
+    // If we ask a question that includes the word color
     //set the userReplies to an array of colors.
     if (state.question.includes("color")) {
       setState(prevState => {
